@@ -1,0 +1,22 @@
+======================================================================
+INTEGRITY TEST LOG
+Test time: 2026-09-19 17:37:49
+======================================================================
+⚠ MF-0001 | mirage_subset_300.json | modified | bronze\mirage-medrag\v1\mirage_subset_300.json
+✓ MF-0002 | SRC-01_YLyYHCT_2008.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-01_YLyYHCT_2008.pdf
+✓ MF-0003 | SRC-02_SoTayThuocNam_2005.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-02_SoTayThuocNam_2005.pdf
+✓ MF-0004 | SRC-03_CayThuocNam_2003.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-03_CayThuocNam_2003.pdf
+✓ MF-0005 | SRC-04_BenhhocDTDY_2007.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-04_BenhhocDTDY_2007.pdf
+✓ MF-0006 | SRC-05_BG-YHCT-Tap1_2005.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-05_BG-YHCT-Tap1_2005.pdf
+✓ MF-0007 | SRC-06_GT-YHCT_2023.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-06_GT-YHCT_2023.pdf
+✓ MF-0008 | SRC-07_GTYHCT_2021.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-07_GTYHCT_2021.pdf
+✓ MF-0009 | SRC-08_QD3991_2025.pdf | verified | bronze\yhct-corpus\SRC_nhanuoc\SRC-08_QD3991_2025.pdf
+✓ MF-0010 | SRC-09_QD5013_2020.pdf | verified | bronze\yhct-corpus\SRC_nhanuoc\SRC-09_QD5013_2020.pdf
+
+======================================================================
+SUMMARY
+======================================================================
+Total files    : 10
+Verified       : 9
+Modified       : 1
+Missing        : 0
