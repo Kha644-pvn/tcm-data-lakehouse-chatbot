@@ -69,6 +69,7 @@
 | `name_vi` | `VARCHAR(255)` | Có | — | Tên bệnh/chứng trạng bằng tiếng Việt. |
 | `category` | `VARCHAR(100)` | Có | — | Nhóm/phân loại bệnh hoặc chứng trạng. |
 | `description` | `TEXT` | Không | — | Mô tả chi tiết về bệnh/chứng trạng. |
+| `Disease prevention methods` | `TEXT` | Không | -| Mô tả cách phòng bệnh |
 | `created_at` | `TIMESTAMP` | Có | `NOW()` | Thời điểm bản ghi được tạo. |
 | `updated_at` | `TIMESTAMP` | Có | `NOW()` | Thời điểm bản ghi được cập nhật gần nhất. |
 
@@ -105,6 +106,7 @@
 | `formula_id` | `VARCHAR(20)` | Có | — | Mã định danh duy nhất của bài thuốc. Là khóa chính. |
 | `name_vi` | `VARCHAR(255)` | Có | — | Tên bài thuốc bằng tiếng Việt. |
 | `origin_document_id` | `VARCHAR(20)` | Có | — | Mã tài liệu nguồn chứa/trích dẫn bài thuốc. Là khóa ngoại tới `document.document_id`. |
+| `preparation_method`  | `TEXT`| Không | Cách pha chế thuốc|
 | `usage_note` | `TEXT` | Không | — | Ghi chú về cách sử dụng ở mức thông tin tham khảo. |
 | `created_at` | `TIMESTAMP` | Có | `NOW()` | Thời điểm bản ghi được tạo. |
 | `updated_at` | `TIMESTAMP` | Có | `NOW()` | Thời điểm bản ghi được cập nhật gần nhất. |
@@ -126,6 +128,8 @@
 |---|---|---|---|---|
 | `herb_id` | `VARCHAR(20)` | Có | — | Mã định danh duy nhất của vị thuốc/dược liệu. Là khóa chính. |
 | `name_vi` | `VARCHAR(255)` | Có | — | Tên vị thuốc/dược liệu bằng tiếng Việt. |
+|  ` origin ` |  `VARCHAR(100)` | Có  |Nguồn tài liệu |
+|`properties` |  `VARCHAR(255)` | Không| mô tả hoạt tính của vị thuốc( cay, chua, đắng,....) |
 | `created_at` | `TIMESTAMP` | Có | `NOW()` | Thời điểm bản ghi được tạo. |
 | `updated_at` | `TIMESTAMP` | Có | `NOW()` | Thời điểm bản ghi được cập nhật gần nhất. |
 
@@ -163,14 +167,17 @@
 
 ## 3.1. Bảng `formula_herb` — Bài thuốc ↔ Vị thuốc
 
-**Mục đích:** Biểu diễn quan hệ nhiều-nhiều giữa bài thuốc và vị thuốc. Một bài thuốc có thể chứa nhiều vị thuốc và một vị thuốc có thể xuất hiện trong nhiều bài thuốc.
+**Mục đích:** Biểu diễn quan hệ nhiều-nhiều giữa bài thuốc và vị thuốc.huốc có thể xuất h Một bài thuốc có thể chứa nhiều vị thuốc và một vị tiện trong nhiều bài thuốc.
 
 | Tên cột | Kiểu dữ liệu | Bắt buộc | Mặc định | Mô tả |
 |---|---|---|---|---|
 | `formula_id` | `VARCHAR(20)` | Có | — | Mã bài thuốc. Khóa ngoại tới `herbal_formula.formula_id`. |
 | `herb_id` | `VARCHAR(20)` | Có | — | Mã vị thuốc. Khóa ngoại tới `herb.herb_id`. |
-| `role_in_formula` | `VARCHAR(50)` | Không | — | Vai trò của vị thuốc trong bài thuốc: quân / thần / tá / sứ. |
+|`dosage_amount`| `NUMERIC(6,2`)` | Có | Số lượng liều dùng |
+|`dosage_unit`|`VARCHAR(20)`| Có |Đơn vị: g, ml, ml,...|
 | `note` | `TEXT` | Không | — | Ghi chú bổ sung về vai trò hoặc mối quan hệ giữa vị thuốc và bài thuốc. |
+
+
 
 ### Khóa và ràng buộc
 

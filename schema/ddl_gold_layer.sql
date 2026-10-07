@@ -19,10 +19,10 @@ COMMENT ON TABLE document IS 'Tài liệu nguồn dùng để trích xuất bài
 CREATE TABLE disease_syndrome (
     disease_id      VARCHAR(20)   PRIMARY KEY,
     name_vi         VARCHAR(255)  NOT NULL,
-    name_hanviet    VARCHAR(255),
     category        VARCHAR(100)  NOT NULL,
     description     TEXT,
-    created_at      TIMESTAMP     NOT NULL DEFAULT NOW(),
+	disease_prevention_methods TEXT,
+	created_at      TIMESTAMP     NOT NULL DEFAULT NOW(),
     updated_at      TIMESTAMP     NOT NULL DEFAULT NOW()
 );
 COMMENT ON TABLE disease_syndrome IS 'Danh mục bệnh/chứng trạng theo YHCT';
@@ -40,7 +40,6 @@ COMMENT ON TABLE symptom IS 'Danh mục triệu chứng, dùng chung cho nhiều
 CREATE TABLE herbal_formula (
     formula_id           VARCHAR(20)  PRIMARY KEY,
     name_vi              VARCHAR(255) NOT NULL,
-    name_hanviet          VARCHAR(255),
     origin_document_id    VARCHAR(20) NOT NULL,
     preparation_method    TEXT,
     usage_note            TEXT,
@@ -57,8 +56,6 @@ CREATE INDEX idx_formula_document ON herbal_formula (origin_document_id);
 CREATE TABLE herb (
     herb_id         VARCHAR(20)   PRIMARY KEY,
     name_vi         VARCHAR(255)  NOT NULL,
-    name_hanviet    VARCHAR(255),
-    name_latin      VARCHAR(255),
     origin          VARCHAR(100),
     properties      VARCHAR(255),
     created_at      TIMESTAMP     NOT NULL DEFAULT NOW(),
@@ -83,18 +80,36 @@ CREATE INDEX idx_contraindication_target ON contraindication (target_type, targe
 CREATE TABLE formula_herb (
     formula_id       VARCHAR(20) NOT NULL,
     herb_id          VARCHAR(20) NOT NULL,
-    role_in_formula  VARCHAR(50),   -- quân / thần / tá / sứ
+    role_in_formula  VARCHAR(50),
     note             TEXT,
+
+    dosage_amount    NUMERIC(6,2),
+    dosage_unit      VARCHAR(20),
+    dosage_note      TEXT,
+
     PRIMARY KEY (formula_id, herb_id),
+
     CONSTRAINT fk_fh_formula
-        FOREIGN KEY (formula_id) REFERENCES herbal_formula (formula_id)
+        FOREIGN KEY (formula_id)
+        REFERENCES yhct_gold.herbal_formula(formula_id)
         ON DELETE CASCADE,
+
     CONSTRAINT fk_fh_herb
-        FOREIGN KEY (herb_id) REFERENCES herb (herb_id)
+        FOREIGN KEY (herb_id)
+        REFERENCES yhct_gold.herb(herb_id)
         ON DELETE RESTRICT
 );
 COMMENT ON TABLE formula_herb IS 'Quan hệ N-N: thành phần vị thuốc trong từng bài thuốc';
 CREATE INDEX idx_fh_herb ON formula_herb (herb_id);
+COMMENT ON COLUMN yhct_gold.formula_herb.dosage_amount IS
+    'Số lượng liều dùng ghi trong tài liệu nguồn, ví dụ 9, 12, 6';
+
+COMMENT ON COLUMN yhct_gold.formula_herb.dosage_unit IS
+    'Đơn vị liều dùng, ví dụ g, ml, viên';
+
+COMMENT ON COLUMN yhct_gold.formula_herb.dosage_note IS
+    'Ghi chú bổ sung về liều dùng theo tài liệu nguồn';
+
 
 CREATE TABLE formula_disease (
     formula_id           VARCHAR(20) NOT NULL,

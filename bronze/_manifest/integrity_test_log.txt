@@ -1,8 +1,8 @@
 ======================================================================
 INTEGRITY TEST LOG
-Test time: 2026-09-19 17:37:49
+Test time: 2026-09-29 23:03:06
 ======================================================================
-⚠ MF-0001 | mirage_subset_300.json | modified | bronze\mirage-medrag\v1\mirage_subset_300.json
+✓ MF-0001 | mirage_subset_300.json | verified | bronze\mirage-medrag\v1\mirage_subset_300.json
 ✓ MF-0002 | SRC-01_YLyYHCT_2008.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-01_YLyYHCT_2008.pdf
 ✓ MF-0003 | SRC-02_SoTayThuocNam_2005.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-02_SoTayThuocNam_2005.pdf
 ✓ MF-0004 | SRC-03_CayThuocNam_2003.pdf | verified | bronze\yhct-corpus\SRC_giaotrinh\SRC-03_CayThuocNam_2003.pdf
@@ -17,6 +17,6 @@ Test time: 2026-09-19 17:37:49
 SUMMARY
 ======================================================================
 Total files    : 10
-Verified       : 9
-Modified       : 1
+Verified       : 10
+Modified       : 0
 Missing        : 0
